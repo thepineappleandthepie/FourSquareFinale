@@ -1,0 +1,38 @@
+ private boolean win_checker() {
+        for (int x = 0; x < 4; x++) {
+            for (int c = 0; c < 4; c++) {
+                Move[x][c] = GameBoard[x][c].toString();
+            }
+        }
+        for(int i = 0; i < 16; i++) {
+            if (Move[i][0].equals((Move[i][2])) || Move[i][2].equals((Move[i][3])) && Move[i][1].equals(Move[i][2]) && !Move[i][2].equals("")) //checks horizontally
+            {
+                return true;
+            }
+            if (Move[0][i].equals((Move[2][i])) || Move[2][i].equals((Move[3][i])) && Move[1][i].equals((Move[2][i])) && !Move[2][i].equals("")) //checks vertically
+            {
+                return true;
+            }
+        }
+        //checking diagonal wins
+        if (Move[0][0].equals(Move[1][1]) || Move[3][3].equals(Move[2][2]) && Move[1][1].equals(Move[2][2]) && !Move[1][1].equals("")){
+            return true;
+        }
+        if (Move[0][1].equals(Move[1][2]) && Move[1][2].equals(Move[2][3]) && !Move[1][2].equals("")){
+            return true;
+        }
+        if (Move[1][0].equals(Move[2][1]) && Move[2][1].equals(Move[3][2]) && !Move[2][1].equals("")) {
+            return true;
+        }
+
+        if (Move[3][0].equals(Move[2][1]) || Move[0][3].equals(Move[1][2]) && Move[1][2].equals(Move[2][1]) && !Move[2][1].equals("")){
+            return true;
+        }
+        if (Move[2][0].equals(Move[1][1]) && Move[1][1].equals(Move[0][2]) && !Move[1][1].equals("")){
+            return true;
+        }
+        if (Move[3][0].equals(Move[2][2]) && Move[2][2].equals(Move[1][3]) && !Move[1][3].equals("")){
+            return true;
+        }
+        return false;
+    }
